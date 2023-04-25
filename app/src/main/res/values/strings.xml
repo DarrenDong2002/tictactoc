@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">tictactoc</string>
+    <string name="winButton">win cond</string>
+
+    <string name="timer_format">%d</string>
+    <string name="consecutive_wins">Wins: %d</string>
+    <string name="restart_game">Restart Game</string>
+
+
+    <string name="log_in">Log in</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="create_an_account">Create an Account</string>
+
+    <string name="text_timer">Password</string>
+    <string name="don_t_have_an_account_yet_sign_up_now">Sign Up Here</string>
+</resources>

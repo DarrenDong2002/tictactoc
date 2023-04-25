@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:background="#00203f">
+
+    <TextView
+        android:id="@+id/timerTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="76dp"
+        android:textColor="#3DE0D2"
+
+        android:textSize="48sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <GridLayout
+        android:id="@+id/gridLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:columnCount="3"
+        android:rowCount="3"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/timerTextView">
+
+        <Button
+            android:id="@+id/button1"
+            style="@style/TicTacToeButton"
+            android:hint="#"
+            tools:layout_editor_absoluteX="38dp"
+            tools:layout_editor_absoluteY="235dp" />
+
+        <Button
+            android:id="@+id/button2"
+            style="@style/TicTacToeButton"
+            android:hint="#"
+            tools:layout_editor_absoluteX="155dp"
+            tools:layout_editor_absoluteY="235dp" />
+
+        <Button
+            android:id="@+id/button3"
+            style="@style/TicTacToeButton"
+            android:hint="#"
+            tools:layout_editor_absoluteX="274dp"
+            tools:layout_editor_absoluteY="235dp" />
+
+        <Button
+            android:id="@+id/button4"
+            style="@style/TicTacToeButton"
+            android:hint="#"
+            tools:layout_editor_absoluteX="38dp"
+            tools:layout_editor_absoluteY="360dp" />
+
+        <Button
+            android:id="@+id/button5"
+            style="@style/TicTacToeButton"
+            android:hint="#"
+            tools:layout_editor_absoluteX="155dp"
+            tools:layout_editor_absoluteY="360dp" />
+
+        <Button
+            android:id="@+id/button6"
+            style="@style/TicTacToeButton"
+            android:hint="#"
+            tools:layout_editor_absoluteX="274dp"
+            tools:layout_editor_absoluteY="360dp" />
+
+        <Button
+            android:id="@+id/button7"
+            style="@style/TicTacToeButton"
+            android:hint="#"
+            tools:layout_editor_absoluteX="38dp"
+            tools:layout_editor_absoluteY="491dp" />
+
+        <Button
+            android:id="@+id/button8"
+            style="@style/TicTacToeButton"
+            android:hint="#"
+            tools:layout_editor_absoluteX="155dp"
+            tools:layout_editor_absoluteY="491dp" />
+
+        <Button
+            android:id="@+id/button9"
+            style="@style/TicTacToeButton"
+            android:hint="#"
+            tools:layout_editor_absoluteX="274dp"
+            tools:layout_editor_absoluteY="491dp" />
+    </GridLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
