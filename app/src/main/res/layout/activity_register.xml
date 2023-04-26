@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:gravity="center"
     android:padding="15dp"
-    android:background="@drawable/tikkytakkyneww"
+    android:background="@drawable/signupbackground_new"
     tools:context=".RegisterActivity">
 
 

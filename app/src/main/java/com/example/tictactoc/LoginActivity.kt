@@ -62,7 +62,8 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    override fun onStart() {
+
+     override fun onStart() {
         super.onStart()
 
         if (firebaseAuth.currentUser != null) {

@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:gravity="center"
     android:padding="15dp"
-    android:background="@drawable/signupbackground"
+    android:background="@drawable/signinbackground_new"
     tools:context=".LoginActivity">
 
     <com.google.android.material.textfield.TextInputLayout
