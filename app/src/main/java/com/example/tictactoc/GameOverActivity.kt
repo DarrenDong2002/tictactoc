@@ -8,6 +8,7 @@ import android.widget.TextView
 import com.example.tictactoc.databinding.ActivityGameOverBinding
 import android.net.Uri
 import android.content.Intent
+import android.view.Window
 
 class GameOverActivity : AppCompatActivity() {
     private lateinit var binding: ActivityGameOverBinding
@@ -15,6 +16,11 @@ class GameOverActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityGameOverBinding.inflate(layoutInflater)
+
+        // Hiding the action bar
+        requestWindowFeature(Window.FEATURE_NO_TITLE)
+        supportActionBar?.hide()
+
         setContentView(binding.root)
 
         val winScore = intent.getIntExtra("winScore", 0)

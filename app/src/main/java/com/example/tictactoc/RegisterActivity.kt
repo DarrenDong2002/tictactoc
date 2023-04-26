@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
 import android.content.Intent
+import android.view.Window
 import android.widget.Button
 import android.widget.Toast
 import com.example.tictactoc.databinding.ActivityRegisterBinding
@@ -17,6 +18,11 @@ class RegisterActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityRegisterBinding.inflate(layoutInflater)
+
+        // Hiding the action bar
+        requestWindowFeature(Window.FEATURE_NO_TITLE)
+        supportActionBar?.hide()
+
         setContentView(binding.root)
 
 

@@ -6,6 +6,7 @@ import android.os.Bundle
 import com.example.tictactoc.databinding.ActivityMainBinding
 import android.content.Intent
 import android.app.Activity
+import android.view.Window
 import androidx.activity.result.contract.ActivityResultContracts
 
 
@@ -16,6 +17,11 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
+
+        // Hiding the action bar
+        requestWindowFeature(Window.FEATURE_NO_TITLE)
+        supportActionBar?.hide()
+
         setContentView(binding.root)
 
         val gameOverLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->

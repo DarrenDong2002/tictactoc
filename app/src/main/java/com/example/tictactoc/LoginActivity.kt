@@ -3,6 +3,7 @@ package com.example.tictactoc
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.content.Intent
+import android.view.Window
 import android.widget.Toast
 import com.example.tictactoc.databinding.ActivityLoginBinding
 import com.google.firebase.auth.FirebaseAuth
@@ -18,6 +19,11 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
+
+        // Hiding the action bar
+        requestWindowFeature(Window.FEATURE_NO_TITLE)
+        supportActionBar?.hide()
+
         setContentView(binding.root)
 
 
