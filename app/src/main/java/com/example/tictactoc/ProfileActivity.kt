@@ -29,6 +29,8 @@ class ProfileActivity : AppCompatActivity() {
 
         signoutbutton.setOnClickListener {
             FirebaseAuth.getInstance().signOut()
+            val intent = Intent(this@ProfileActivity, LoginActivity::class.java)
+            startActivity(intent)
 
         }
 
