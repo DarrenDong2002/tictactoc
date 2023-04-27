@@ -8,6 +8,7 @@ import android.content.Intent
 import android.app.Activity
 import android.view.Window
 import androidx.activity.result.contract.ActivityResultContracts
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
 class MainActivity : AppCompatActivity() {
@@ -28,6 +29,23 @@ class MainActivity : AppCompatActivity() {
             if (result.resultCode == Activity.RESULT_OK) {
                 timerViewModel.resetConsecutiveWins()
             }
+        }
+
+        findViewById<BottomNavigationView>(R.id.bottom_navigation).setOnItemSelectedListener {
+            item->
+
+            when (item.itemId) {
+                R.id.action_home -> {
+                    val intent = Intent(this@MainActivity, MainActivity::class.java)
+                    startActivity(intent)
+                }
+                R.id.action_profile -> {
+                    val intent = Intent(this@MainActivity, ProfileActivity::class.java)
+                    startActivity(intent)
+                }
+            }
+
+            true
         }
 
         timerViewModel.gameOver.observe(this, { isGameOver ->
