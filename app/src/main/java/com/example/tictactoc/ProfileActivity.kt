@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.Window
 import android.widget.Button
 import com.example.tictactoc.databinding.ActivityProfileBinding
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 
 
@@ -30,6 +31,21 @@ class ProfileActivity : AppCompatActivity() {
             FirebaseAuth.getInstance().signOut()
 
         }
+
+        findViewById<BottomNavigationView>(R.id.bottom_navigationn).setOnItemSelectedListener {
+                item->
+
+            when (item.itemId) {
+
+                R.id.action_home -> {
+                    val intent = Intent(this@ProfileActivity, MainActivity::class.java)
+                    startActivity(intent)
+                }
+            }
+
+            true
+        }
+
 
     }
 }

@@ -35,10 +35,7 @@ class MainActivity : AppCompatActivity() {
             item->
 
             when (item.itemId) {
-                R.id.action_home -> {
-                    val intent = Intent(this@MainActivity, MainActivity::class.java)
-                    startActivity(intent)
-                }
+
                 R.id.action_profile -> {
                     val intent = Intent(this@MainActivity, ProfileActivity::class.java)
                     startActivity(intent)
