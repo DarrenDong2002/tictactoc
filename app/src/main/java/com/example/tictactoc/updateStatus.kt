@@ -5,15 +5,16 @@ import com.google.firebase.ktx.Firebase
 class updateStatus {
     private val db = Firebase.firestore
     fun updateScore(usid: String){
-        print("in")
         val docRef = db.collection("users").document(usid)
-        var score: Int = 0
+        var score: Long = 0
         docRef.get()
-            .addOnSuccessListener { document ->
-                if (document != null) {
-                    score = document.getLong("numberOfWins")?.toInt()!!
+            .addOnSuccessListener { documentSnapshot ->
+                if (documentSnapshot != null && documentSnapshot.exists()) {
+                    score = documentSnapshot.get("numberOfWins") as Long
+                    score +=1
+                    docRef.update("numberOfWins", score)
                 }
             }
-        docRef.update("numberOfWins", score+1)
+
     }
 }
