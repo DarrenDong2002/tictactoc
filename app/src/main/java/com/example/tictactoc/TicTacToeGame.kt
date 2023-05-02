@@ -1,5 +1,8 @@
 package com.example.tictactoc
+import com.example.tictactoc.updateStatus
+import com.google.firebase.auth.FirebaseAuth
 
+private lateinit var firebaseAuth: FirebaseAuth
 class TicTacToeGame {
     var board = MutableList(9) { "" }
     var winner: String? = null
@@ -37,6 +40,8 @@ class TicTacToeGame {
                 board[combination[1]] == player &&
                 board[combination[2]] == player
             ) {
+                val uSA = updateStatus()
+                firebaseAuth.uid?.let { uSA.updateScore(it) }
                 winner = player
                 gameOver = true
                 break
