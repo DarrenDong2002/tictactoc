@@ -5,6 +5,7 @@ import com.google.firebase.ktx.Firebase
 class updateStatus {
     private val db = Firebase.firestore
     fun updateScore(usid: String){
+        print("in")
         val docRef = db.collection("users").document(usid)
         var score: Int = 0
         docRef.get()
