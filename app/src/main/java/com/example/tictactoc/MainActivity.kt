@@ -10,7 +10,6 @@ import android.view.Window
 import androidx.activity.result.contract.ActivityResultContracts
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
-
 class MainActivity : AppCompatActivity() {
     private val timerViewModel: TimerViewModel by viewModels()
     private lateinit var binding: ActivityMainBinding
@@ -28,42 +27,23 @@ class MainActivity : AppCompatActivity() {
         val gameOverLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode == Activity.RESULT_OK) {
                 timerViewModel.resetConsecutiveWins()
+                timerViewModel.resumeTimer()
             }
-        }
-
-        findViewById<BottomNavigationView>(R.id.bottom_navigation).setOnItemSelectedListener {
-            item->
-
-            when (item.itemId) {
-
-                R.id.action_profile -> {
-                    val intent = Intent(this@MainActivity, ProfileActivity::class.java)
-                    startActivity(intent)
-                }
-            }
-
-            true
         }
 
         timerViewModel.gameOver.observe(this, { isGameOver ->
             if (isGameOver) {
+                timerViewModel.pauseTimer()
                 val intent = Intent(this, GameOverActivity::class.java)
                 intent.putExtra("winScore", timerViewModel.consecutiveWins.value ?: 0)
                 gameOverLauncher.launch(intent)
             }
         })
 
-        timerViewModel.timerValue.observe(this, { seconds ->
-            binding.timerTextView.text = getString(R.string.timer_format, seconds / 1000)
-        })
-
         timerViewModel.timerValue.observe(this, { timerValue ->
             binding.timerTextView.text = getString(R.string.timer_format, timerValue / 1000)
-            if (timerValue == 0L) {
-                timerViewModel.resetGame()
-                showGameOverActivity(timerViewModel.consecutiveWins.value ?: 0)
-            }
         })
+
         val buttons = listOf(
             binding.button1,
             binding.button2,
@@ -87,18 +67,6 @@ class MainActivity : AppCompatActivity() {
                 button.text = board[index]
             }
         })
-
-        timerViewModel.gameOver.observe(this, { isGameOver ->
-            if (isGameOver) {
-                showGameOverActivity(timerViewModel.consecutiveWins.value ?: 0)
-            }
-        })
-
-    }
-
-    private fun showGameOverActivity(consecutiveWins: Int) {
-        val intent = Intent(this, GameOverActivity::class.java)
-        intent.putExtra("winScore", consecutiveWins)
-        startActivity(intent)
     }
 }
+

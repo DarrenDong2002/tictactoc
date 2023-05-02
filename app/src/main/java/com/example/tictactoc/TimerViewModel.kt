@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.Job
 
 class TimerViewModel : ViewModel() {
     private val _timerValue = MutableLiveData<Long>(10000L)
@@ -22,27 +23,30 @@ class TimerViewModel : ViewModel() {
 
     private val ticTacToeGame = TicTacToeGame()
 
+    private var timerJob: Job? = null
+
     init {
         startTimer()
     }
-    init {
-        viewModelScope.launch {
-            while (true) {
-                delay(1000)
-                if (_timerValue.value!! > 0) {
-                    _timerValue.value = _timerValue.value!! - 1000
-                }
-            }
-        }
-    }
 
     private fun startTimer() {
-        viewModelScope.launch {
+        timerJob = viewModelScope.launch {
             while (_timerValue.value!! > 0) {
                 delay(1000)
                 _timerValue.value = _timerValue.value!! - 1000
             }
-            delay(1000)
+            _gameOver.value = true
+        }
+    }
+
+    fun pauseTimer() {
+        timerJob?.cancel()
+    }
+
+    fun resumeTimer() {
+        if (_timerValue.value!! > 0) {
+            startTimer()
+        } else {
             resetGame()
         }
     }
@@ -78,7 +82,7 @@ class TimerViewModel : ViewModel() {
         _ticTacToeBoard.value = ticTacToeGame.board
     }
 
-     fun resetGame() {
+    fun resetGame() {
         resetBoard()
         _timerValue.value = 10000L
     }
