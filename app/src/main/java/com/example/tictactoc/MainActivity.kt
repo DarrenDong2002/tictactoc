@@ -24,6 +24,20 @@ class MainActivity : AppCompatActivity() {
 
         setContentView(binding.root)
 
+        findViewById<BottomNavigationView>(R.id.bottom_navigation).setOnItemSelectedListener {
+                item->
+
+            when (item.itemId) {
+
+                R.id.action_profile -> {
+                    val intent = Intent(this@MainActivity, ProfileActivity::class.java)
+                    startActivity(intent)
+                }
+            }
+
+            true
+        }
+
         val gameOverLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode == Activity.RESULT_OK) {
                 timerViewModel.resetConsecutiveWins()
