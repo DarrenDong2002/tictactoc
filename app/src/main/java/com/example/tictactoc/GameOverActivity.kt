@@ -35,7 +35,7 @@ class GameOverActivity : AppCompatActivity() {
 
         val leaderboardButton: Button = binding.leaderboardButton
         leaderboardButton.setOnClickListener {
-            val websiteUrl = "https://www.youtube.com/watch?v=JtH68PJIQLE" // PLEASE LINK OUR WEBSITE!!
+            val websiteUrl = "https://m4d97xhms8hd7gwaedxzzg.on.drv.tw/www.leaderboard/lb.html" // PLEASE LINK OUR WEBSITE!!
             val intent = Intent(Intent.ACTION_VIEW, Uri.parse(websiteUrl))
             startActivity(intent)
         }

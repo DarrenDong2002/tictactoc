@@ -1,5 +1,6 @@
 package com.example.tictactoc
 
+import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 class updateStatus {
@@ -15,6 +16,16 @@ class updateStatus {
                     docRef.update("numberOfWins", score)
                 }
             }
+        val collectionRef = db.collection("users")
 
+        // order by "username" field in ascending order
+        collectionRef.orderBy("numberOfWins", Query.Direction.ASCENDING)
+            .get()
+            .addOnSuccessListener { querySnapshot ->
+                for (document in querySnapshot.documents) {
+                    val username = document.getLong("numberOfWins")
+                    // use the username value here
+                }
+            }
     }
 }
